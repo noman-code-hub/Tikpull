@@ -1,0 +1,16 @@
+{
+  "name": "tiktok-downloader",
+  "private": true,
+  "version": "1.0.0",
+  "description": "TikTok video downloader with Vercel serverless API routes and a static frontend.",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "engines": {
+    "node": "22.x"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "node-fetch": "2.7.0"
+  }
+}

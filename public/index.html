@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TikPull &mdash; Download TikTok Videos Without Watermark Free</title>
+    <meta
+      name="description"
+      content="Download TikTok videos without watermark in HD quality. Free, fast, no login required. Save TikTok to MP4 or MP3 in seconds."
+    />
+    <link rel="icon" href="/new-favicon.svg" type="image/svg+xml" />
+    <meta
+      name="keywords"
+      content="tiktok downloader, download tiktok without watermark, tiktok to mp4, save tiktok video, tiktok video downloader free"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "name": "TikPull",
+            "url": "https://example.com/",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://example.com/?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          },
+          {
+            "@type": "Organization",
+            "name": "TikPull",
+            "url": "https://example.com/",
+            "description": "TikPull helps users download public TikTok videos as MP4 or MP3 files."
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Is it free to download TikTok videos?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, TikPull is free to use. You do not need to create an account or install an app. Paste a public TikTok link, then choose the download option you need."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do I download TikTok without watermark?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Copy the TikTok video link and paste it into the download box. TikPull checks the public video page for available media files. When supported, it gives you a clean video option without a watermark."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I download TikTok videos on iPhone?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, TikPull works in Safari and other iPhone browsers. Paste the TikTok link, then tap Download Now. Save the file to Files, Photos, or another app you choose."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I download TikTok videos on Android?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, TikPull works on Android phones and tablets. Open the site in Chrome or your browser. Paste the link, download the file, and find it in your Downloads folder."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is it legal to download TikTok videos?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Downloading may be allowed for personal use in some cases. You should respect copyright, privacy, and TikTok creator rights. Do not repost or reuse content without permission from the owner."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What format are downloaded videos saved in?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Most videos are saved as MP4 files. Audio downloads may be saved as MP3 or a browser-supported audio file. The exact format depends on the media TikTok provides."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why is my TikTok video not downloading?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The video may be private, deleted, restricted, or blocked by TikTok. The link may also have expired. Try a fresh public TikTok link and submit it again."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I download TikTok videos from private accounts?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No, TikPull only works with public TikTok videos. Private videos are not available through public pages. We do not bypass privacy settings or account restrictions."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <a class="brand" href="/" aria-label="TikPull home">
+          <img src="/new-favicon.svg" alt="TikPull logo" class="logo-mark">
+          <span class="brand-name">TikPull</span>
+        </a>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="hero-title">
+          <h1 id="hero-title">Download TikTok Videos Without Watermark</h1>
+          <p class="subtitle">Fast, free, HD quality</p>
+
+          <form class="download-panel" id="downloadForm">
+            <div class="input-row">
+              <input
+                id="urlInput"
+                type="url"
+                name="url"
+                placeholder="Paste TikTok video link here..."
+                autocomplete="off"
+                required
+              />
+              <button class="paste-btn" id="pasteBtn" type="button">Paste</button>
+              <button class="download-btn" id="submitBtn" type="submit">Download Now</button>
+            </div>
+            <div class="status" id="loadingStatus" aria-live="polite">
+              <span class="spinner" aria-hidden="true"></span>
+              <span>Fetching video...</span>
+            </div>
+          </form>
+
+          <div class="error-box" id="errorBox" role="alert">
+            <p class="error-title" id="errorTitle">Download failed</p>
+            <p class="error-text" id="errorText">Please check the URL and try again.</p>
+          </div>
+
+          <article class="result-card" id="resultCard">
+            <img class="thumbnail" id="thumbnail" alt="TikTok video thumbnail" />
+            <div class="result-info">
+              <h3 class="result-title" id="videoTitle"></h3>
+              <p class="author" id="author"></p>
+              <div class="stats">
+                <span class="stat"><strong id="likes">0</strong> likes</span>
+                <span class="stat"><strong id="views">0</strong> views</span>
+              </div>
+              <div class="actions">
+                <button class="action-btn primary" id="downloadHd" type="button">Download HD Video</button>
+                <button class="action-btn" id="downloadSd" type="button">Download SD Video</button>
+                <button class="action-btn" id="downloadAudio" type="button">Download Audio MP3</button>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="section" aria-labelledby="how-title">
+          <h2 id="how-title">How to Download TikTok Videos in 3 Steps</h2>
+          <div class="grid">
+            <article class="card">
+              <h3>Step 1: Copy the TikTok link</h3>
+              <p>Open TikTok and find the public video you want to save. Tap Share, then copy the video link.</p>
+            </article>
+            <article class="card">
+              <h3>Step 2: Paste it into the box</h3>
+              <p>Return to TikPull and paste the link into the input field. You can also use the Paste button.</p>
+            </article>
+            <article class="card">
+              <h3>Step 3: Click download and save</h3>
+              <p>Click Download Now and wait for the result. Choose HD video, SD video, or audio.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="features-title">
+          <h2 id="features-title">Why Use TikPull?</h2>
+          <div class="grid">
+            <article class="card">
+              <h3>No Watermark</h3>
+              <p>Save clean TikTok videos when a supported source is available. The result is easier to watch and share privately.</p>
+            </article>
+            <article class="card">
+              <h3>HD Quality</h3>
+              <p>TikPull looks for high quality video options from public pages. You can choose HD when TikTok provides it.</p>
+            </article>
+            <article class="card">
+              <h3>100% Free</h3>
+              <p>You can use TikPull without paying fees. There are no credits, hidden plans, or required upgrades.</p>
+            </article>
+            <article class="card">
+              <h3>No Login Required</h3>
+              <p>You do not need a TikPull account. Paste a public TikTok link and download from your browser.</p>
+            </article>
+            <article class="card">
+              <h3>Works on All Devices</h3>
+              <p>Use TikPull on phones, tablets, laptops, and desktop computers. It works in modern browsers without extra software.</p>
+            </article>
+            <article class="card">
+              <h3>Fast Downloads</h3>
+              <p>The tool checks the video page and returns download options quickly. Fresh links help downloads start faster.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="faq-title">
+          <h2 id="faq-title">Frequently Asked Questions</h2>
+          <div class="faq-grid">
+            <article class="faq-item">
+              <h3>Is it free to download TikTok videos?</h3>
+              <p>Yes, TikPull is free to use. You do not need to create an account or install an app. Paste a public TikTok link, then choose the download option you need.</p>
+            </article>
+            <article class="faq-item">
+              <h3>How do I download TikTok without watermark?</h3>
+              <p>Copy the TikTok video link and paste it into the download box. TikPull checks the public video page for available media files. When supported, it gives you a clean video option without a watermark.</p>
+            </article>
+            <article class="faq-item">
+              <h3>Can I download TikTok videos on iPhone?</h3>
+              <p>Yes, TikPull works in Safari and other iPhone browsers. Paste the TikTok link, then tap Download Now. Save the file to Files, Photos, or another app you choose.</p>
+            </article>
+            <article class="faq-item">
+              <h3>Can I download TikTok videos on Android?</h3>
+              <p>Yes, TikPull works on Android phones and tablets. Open the site in Chrome or your browser. Paste the link, download the file, and find it in your Downloads folder.</p>
+            </article>
+            <article class="faq-item">
+              <h3>Is it legal to download TikTok videos?</h3>
+              <p>Downloading may be allowed for personal use in some cases. You should respect copyright, privacy, and TikTok creator rights. Do not repost or reuse content without permission from the owner.</p>
+            </article>
+            <article class="faq-item">
+              <h3>What format are downloaded videos saved in?</h3>
+              <p>Most videos are saved as MP4 files. Audio downloads may be saved as MP3 or a browser-supported audio file. The exact format depends on the media TikTok provides.</p>
+            </article>
+            <article class="faq-item">
+              <h3>Why is my TikTok video not downloading?</h3>
+              <p>The video may be private, deleted, restricted, or blocked by TikTok. The link may also have expired. Try a fresh public TikTok link and submit it again.</p>
+            </article>
+            <article class="faq-item">
+              <h3>Can I download TikTok videos from private accounts?</h3>
+              <p>No, TikPull only works with public TikTok videos. Private videos are not available through public pages. We do not bypass privacy settings or account restrictions.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="seo-title">
+          <h2 id="seo-title">TikTok Video Downloader for MP4 and MP3</h2>
+          <p class="seo-copy">
+            TikPull is a simple tiktok downloader for people who want to save useful clips for offline viewing. You can download tiktok video files from public links and keep them as MP4 on your phone, tablet, or computer. The tool is free, fast, and built for clean results with no watermark when TikTok provides a supported video source. It also helps you save audio as MP3 when you only need the sound. Paste the video link, wait a moment, and choose HD video or audio. TikPull does not ask for an account, and it does not store your downloads. Creators keep ownership of their work, so use saved files responsibly. This site works in modern browsers and supports common TikTok link formats. For best results, use public videos and fresh links. If a link expires, submit the TikTok URL again to create new download options online in a few seconds safely.
+          </p>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div>&copy; <span id="year"></span> TikPull</div>
+        <div>We do not store or host any videos. Content belongs to original TikTok creators.</div>
+      </footer>
+    </div>
+
+    <script>
+      const form = document.getElementById('downloadForm');
+      const urlInput = document.getElementById('urlInput');
+      const pasteBtn = document.getElementById('pasteBtn');
+      const submitBtn = document.getElementById('submitBtn');
+      const loadingStatus = document.getElementById('loadingStatus');
+      const errorBox = document.getElementById('errorBox');
+      const errorText = document.getElementById('errorText');
+      const resultCard = document.getElementById('resultCard');
+      const thumbnail = document.getElementById('thumbnail');
+      const videoTitle = document.getElementById('videoTitle');
+      const author = document.getElementById('author');
+      const likes = document.getElementById('likes');
+      const views = document.getElementById('views');
+      const downloadHd = document.getElementById('downloadHd');
+      const downloadSd = document.getElementById('downloadSd');
+      const downloadAudio = document.getElementById('downloadAudio');
+
+      let currentResult = null;
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      function setLoading(isLoading) {
+        submitBtn.disabled = isLoading;
+        pasteBtn.disabled = isLoading;
+        loadingStatus.classList.toggle('visible', isLoading);
+      }
+
+      function hideError() {
+        errorBox.classList.remove('visible');
+        errorText.textContent = 'Please check the URL and try again.';
+      }
+
+      function showError(message) {
+        errorText.textContent = message || 'Please check the URL and try again.';
+        errorBox.classList.add('visible');
+      }
+
+      function formatNumber(value) {
+        return new Intl.NumberFormat('en', {
+          notation: 'compact',
+          maximumFractionDigits: 1,
+        }).format(Number(value) || 0);
+      }
+
+      function safeName(value) {
+        return String(value || 'tiktok-video')
+          .replace(/[^\w.-]+/g, '-')
+          .replace(/-+/g, '-')
+          .replace(/^-|-$/g, '')
+          .slice(0, 70);
+      }
+
+      function renderResult(data) {
+        currentResult = data;
+        thumbnail.src = data.thumbnail || '';
+        videoTitle.textContent = data.title || 'TikTok video';
+        author.textContent = data.author || '@creator';
+        likes.textContent = formatNumber(data.likes);
+        views.textContent = formatNumber(data.views);
+        downloadHd.disabled = !data.video_hd;
+        downloadSd.disabled = !data.video_sd;
+        downloadAudio.disabled = !data.audio;
+        resultCard.classList.add('visible');
+      }
+
+      function triggerDownload(url, filename, type) {
+        if (!url) {
+          showError('This download URL is not available for the selected video.');
+          return;
+        }
+
+        const streamUrl = `/api/stream?url=${encodeURIComponent(url)}&filename=${encodeURIComponent(
+          filename
+        )}&type=${encodeURIComponent(type || 'video')}&referer=${encodeURIComponent(
+          (currentResult && currentResult.canonical_url) || 'https://www.tiktok.com/'
+        )}`;
+        const a = document.createElement('a');
+        a.href = streamUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }
+
+      pasteBtn.addEventListener('click', async () => {
+        hideError();
+        try {
+          const text = await navigator.clipboard.readText();
+          if (text) {
+            urlInput.value = text.trim();
+            urlInput.focus();
+          }
+        } catch (error) {
+          showError('Clipboard access was blocked. Paste the URL manually and try again.');
+        }
+      });
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        hideError();
+        resultCard.classList.remove('visible');
+
+        const url = urlInput.value.trim();
+        if (!url) {
+          showError('Please check the URL and try again.');
+          return;
+        }
+
+        setLoading(true);
+
+        try {
+          const response = await fetch('/api/download', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url }),
+          });
+
+          const data = await response.json();
+          if (!response.ok || !data.success) {
+            throw new Error(data.error || 'Please check the URL and try again.');
+          }
+
+          renderResult(data);
+        } catch (error) {
+          showError(error.message || 'Please check the URL and try again.');
+        } finally {
+          setLoading(false);
+        }
+      });
+
+      downloadHd.addEventListener('click', () => {
+        const name = safeName(currentResult && (currentResult.author || currentResult.video_id));
+        triggerDownload(currentResult && currentResult.video_hd, `${name}-hd.mp4`, 'video');
+      });
+
+      downloadSd.addEventListener('click', () => {
+        const name = safeName(currentResult && (currentResult.author || currentResult.video_id));
+        triggerDownload(currentResult && currentResult.video_sd, `${name}-sd.mp4`, 'video');
+      });
+
+      downloadAudio.addEventListener('click', () => {
+        const name = safeName(currentResult && (currentResult.author || currentResult.video_id));
+        triggerDownload(currentResult && currentResult.audio, `${name}-audio.mp3`, 'audio');
+      });
+    </script>
+  </body>
+</html>

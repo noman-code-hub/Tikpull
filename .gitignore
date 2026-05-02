@@ -1,0 +1,7 @@
+node_modules
+dist
+*.local
+*.log
+
+tiktok-downloader/node_modules
+tiktok-downloader/dist
