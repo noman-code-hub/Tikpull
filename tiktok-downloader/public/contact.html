@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us &mdash; TikPull</title>
+    <meta
+      name="description"
+      content="Contact TikPull for support, privacy questions, feedback, or general questions about the downloader."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <a class="brand" href="/" aria-label="TikPull home">
+                    <img src="/new-favicon.svg" alt="TikPull logo" class="logo-mark">
+          <span class="brand-name">TikPull</span>
+        </a>
+      </header>
+
+      <main>
+        <section class="page-title">
+          <h1>Contact Us</h1>
+          <p>Have a question, bug report, or privacy request? Send us a message and we will review it.</p>
+        </section>
+
+        <section class="section">
+          <form class="content-panel form-panel" id="contactForm">
+            <label>
+              Name
+              <input type="text" name="name" placeholder="Your name" autocomplete="name" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+            </label>
+            <label>
+              Message
+              <textarea name="message" placeholder="Write your message..." required></textarea>
+            </label>
+            <button class="primary-btn" type="submit">Submit</button>
+            <p>We typically respond within 24-48 hours.</p>
+          </form>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div>&copy; 2026 TikPull</div>
+        <div>We do not store or host any videos. Content belongs to original TikTok creators.</div>
+      </footer>
+    </div>
+    <script>
+      document.getElementById('contactForm').addEventListener('submit', (event) => {
+        event.preventDefault();
+        event.currentTarget.reset();
+        alert('Thanks for contacting TikPull. We will review your message.');
+      });
+    </script>
+  </body>
+</html>
